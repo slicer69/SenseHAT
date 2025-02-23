@@ -145,6 +145,7 @@ def main():
    colour_index = 0
    max_colour = len(COLOURS)
    life_colour = COLOURS[colour_index]
+   cycle_count = 0
    sense.clear()
 
    signal.signal(signal.SIGINT, signal_handler)
@@ -158,10 +159,13 @@ def main():
 
       # calculate new life positions
       new_board = apply_life_processes(my_board)
+      cycle_count += 1
 
       # See if the board is stuck in a fixed pattern
-      if new_board == my_board:
+      # Also reset after five minutes (150 cycles)
+      if (new_board == my_board) or (cycle_count > 150):
          init_life_board(my_board)
+         cycle_count = 0
       else:
          my_board = new_board
 
