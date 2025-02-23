@@ -12,9 +12,9 @@ sense.set_rotation(180)
 while True:
     temp = sense.get_temperature()
     show_temp = round(temp)
-    if (show_temp < 50):
+    if (show_temp < 30):
        my_colour = blue
-    elif (show_temp < 60):
+    elif (show_temp < 50):
        my_colour = green
     else:
        my_colour = red
