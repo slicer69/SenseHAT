@@ -81,3 +81,7 @@ The game continues until all squares are full or one player wins the game. The
 results are then shown in a scrolling text across the LEDs.
 
 
+Note: ny of the above games or scripts with long delays can be
+exited by pressing Ctrl-C on the console. This will cause the
+games/demos to clean up the LED display and exit.
+

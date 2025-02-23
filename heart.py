@@ -1,5 +1,8 @@
 from sense_hat import SenseHat
 import time
+import sys
+import signal
+
 
 R = [255,0,0]
 B = [0,0,200]
@@ -16,6 +19,13 @@ B, B, B, B, B, B, B, B
 ]
 
 sense = SenseHat()
+
+def signal_handler(my_signal, temp):
+   sense.clear()
+   sys.exit(0)
+
+
+signal.signal(signal.SIGINT, signal_handler)
 sense.set_rotation(180)
 sense.set_pixels(heart)
 time.sleep(300)

@@ -1,4 +1,6 @@
 from sense_hat import SenseHat
+import signal
+import sys
 import time
 import random
 
@@ -17,6 +19,11 @@ BLACK = (0, 0, 0)
 BOARD_WIDTH = 8
 BOARD_HEIGHT = 8
 BOARD_SIZE = BOARD_WIDTH * BOARD_HEIGHT
+
+
+def signal_handler(my_signal, temp):
+   sense.clear()
+   sys.exit(0)
 
 
 # Place the initial life forms on the board
@@ -139,6 +146,8 @@ def main():
    max_colour = len(COLOURS)
    life_colour = COLOURS[colour_index]
    sense.clear()
+
+   signal.signal(signal.SIGINT, signal_handler)
 
    # init board with starting characters
    init_life_board(my_board)

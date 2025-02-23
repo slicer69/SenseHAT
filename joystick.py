@@ -1,4 +1,6 @@
 from sense_hat import SenseHat
+import sys
+import signal
 import time
 
 red = (200, 0, 0)
@@ -8,8 +10,14 @@ blue = (0, 0, 200)
 
 sense = SenseHat()
 
+def signal_handler(my_signal, temp):
+   sense.clear()
+   sys.exit(0)
+
+
 finished = False
 colour = green
+signal.signal(signal.SIGINT, signal_handler)
 
 while not finished:
    my_event = sense.stick.wait_for_event(emptybuffer = True)

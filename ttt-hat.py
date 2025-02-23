@@ -1,5 +1,6 @@
 import sys
 import random
+import signal
 import time
 from sense_hat import SenseHat
 
@@ -32,6 +33,11 @@ D, D, G, D, D, G, D, D,
 D, D, G, D, D, G, D, D
 ]
 sense = SenseHat()
+
+
+def signal_handler(my_signal, temp):
+   sense.clear()
+   sys.exit(0)
 
 
 # Draw the game on the screen
@@ -424,6 +430,7 @@ def main():
    found_win = False
    winner = "Tie Game"
 
+   signal.signal(signal.SIGINT, signal_handler)
    # Initialize board
    sense.set_rotation(180)
    for square in range(squares):

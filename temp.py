@@ -1,11 +1,20 @@
 from sense_hat import SenseHat
+import signal
+import sys
 import time
+
+sense = SenseHat()
+
+def signal_handler(my_signal, temp):
+   sense.clear()
+   sys.exit(0)
+
 
 red = (200, 0, 0)
 green = (0, 200, 0)
 blue = (0, 0, 200)
 
-sense = SenseHat()
+signal.signal(signal.SIGINT, signal_handler)
 
 sense.set_rotation(180)
 
