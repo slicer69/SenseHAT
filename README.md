@@ -18,6 +18,14 @@ The Compass (compass.py) program reads the current direction of the Sense HAT
 of the Pi is then printed to the LED lights.
 
 
+## Fuzzy
+
+The Fuzzy Python script (fuzzy.py) draws randomly coloured dots at random positions
+on the LED screen of the Sense HAT. It draws a new dot every quarter of a second.
+Over time, this fills the LED board and gives it a fuzzy/shimmering quality.
+The script concludes and clears the screen when Ctrl-C is pressed.
+
+
 ## Heart
 
 The Hear program (heart.py) displays a red heart shape on a blue background
