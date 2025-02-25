@@ -18,6 +18,22 @@ The Compass (compass.py) program reads the current direction of the Sense HAT
 of the Pi is then printed to the LED lights.
 
 
+## Eggtimer
+
+The Eggtimer (eggtimer.py) program accepts a single parameter, a time in
+seconds. The script then lights up the LED board with a spectrum of colours,
+which is displayed in a spiral around the LEDs
+.
+The lights are then turned off at a rate which will cause the LED board to
+go completely dark after the specified number of seconds.
+
+There are 8 colours displyed on the 64 pixel LED board. Specifying a delay
+of 64 seconds would cause one light to go out every second. Specifying 32 seconds
+would cause two lights to go dark every second. A delay of 192 seconds (just
+over three minutes) makes one LED go dark every three seconds.
+
+
+
 ## Fuzzy
 
 The Fuzzy Python script (fuzzy.py) draws randomly coloured dots at random positions
