@@ -49,6 +49,23 @@ on the Sense HAT's LED display. The image remains for five minutes. Then
 the LED screen is cleared/turned off.
 
 
+## Heat Colours
+
+The Heat Colours Python script (heat-colours.py) begins by setting the LED display
+to show green on all pixels. The script then begins monitoring the temperature around the
+Sense HAT. As the temperature rises, the LED display shifts its colours along the
+spectrum toward red (yellow, orange, then red). If the temperature lowers, the
+colours shift toward purple (teal, blue, purple).
+
+The script continues to check for changes in temperature until terminated or
+interrupted with Ctrl-C.
+
+The idea behind Heat Colours was to give a quick visual indicator if a task running
+on the Raspberry Pi was making the air around it warmer. Running Heat Colours in the
+background gives immediate feedback on the air temperature near the Pi without needing
+to run other tools like system monitors or the sensors program.
+
+
 ## Hello
 
 The Hello script (hello.py) displays the message "Hello World!" is scrolling
