@@ -97,6 +97,18 @@ The colour and cells change once every two seconds. The game stops when the
 joystick button is depressed and released.
 
 
+## Nightlight
+
+The Nightlight (nightlight.py) program detects when there is little to no light
+in the room. It then displays colours on the LED display, cycling through the
+spectrum. Colours gradually shift through shades between colours, slowly
+adjusting from green to teal, then blue, purple, red, orange, yellow, and back to green.
+The visual sensor tries to detect light in the room and the script turns off
+the LEDs if bright light is detected.
+
+The lightnight can also be stopped by pressing Ctrl-C which turns off the LEDs.
+
+
 ## Temp
 
 The Temperature (temp.py) program checks the current room temperature around the
