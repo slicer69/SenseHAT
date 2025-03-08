@@ -150,7 +150,7 @@ def main():
 
       # See if the board is stuck in a fixed pattern
       # Also reset after five minutes (150 cycles)
-      if (new_board == my_board) or (cycle_count > 150):
+      if (new_board == my_board) or (cycle_count > 1000):
          init_life_board(my_board)
          cycle_count = 0
       else:
