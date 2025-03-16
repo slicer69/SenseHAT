@@ -97,6 +97,31 @@ The colour and cells change once every two seconds. The game stops when the
 joystick button is depressed and released.
 
 
+
+## Memory
+
+The Memory script (memory.py) implements a simple memory game using colours.
+The LED screen is divided into nine squares, with the eight squares around
+the outside each assigned a colour.
+
+The game selects a series of colours at random. Each round the player is shown
+a sequence of colours, in order. Once each colour has flashed, in sequence,
+the player uses the Sense HAT's joystick to select those same colours in
+the same order.
+
+When the player successfully picks the right sequence of colours, the
+game flashes a green light in the middle of the LED display. Then 
+the player is shown a new, longer sequence of colours and the player
+needs to input the new sequence.
+
+During the first round the player needs to remember one colour. Then
+two colours in the second round, then three in the third, and so on.
+
+When the player guesses a colour incorrectly the game is over and Memory
+will display how many rounds the player completed on the LED screen.
+
+
+
 ## Nightlight
 
 The Nightlight (nightlight.py) program detects when there is little to no light
