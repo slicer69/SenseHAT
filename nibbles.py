@@ -61,6 +61,24 @@ def Place_Snake_On_Board(my_board, snake, max_snake):
 
 
 
+# Detect if we ran into ourselves or the side of the wall.
+# Returns True if we ran unto a wall or ourselves.
+# Returns False if we did not run into anything.
+def Detect_Collision(the_board, x, y):
+    # Check if we are off the board first
+    if x < 0 or x >= BOARD_WIDTH:
+       return True
+    if y < 0 or y >= BOARD_HEIGHT:
+       return True
+
+    # See if we ran into our own colour/tail
+    offset = (y * BOARD_WIDTH) + x
+    if the_board[offset] == SNAKE_COLOUR:
+        return True
+
+    return False
+
+
 
 def main():
    snake_position = []
