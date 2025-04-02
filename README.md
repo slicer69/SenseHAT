@@ -11,6 +11,16 @@ Then the screen clears. This can be useful for either testing the LED lights
 or clearing old display data off the LEDs.
 
 
+
+## Clock
+
+The Clock program (clock.py) checks the current time and displays it in
+digital numerals on the LED screen of the Sense HAT. The Clock program
+updates the time (displayed in 24 hour format) every second, showing
+hours in green and minutes in red. The Clock program runs until it
+is terminated, usually by pressing Ctrl-C.
+
+
 ## Compass
 
 The Compass (compass.py) program reads the current direction of the Sense HAT

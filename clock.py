@@ -1,11 +1,11 @@
-# from sense_hat import SenseHat
+from sense_hat import SenseHat
 import math
 import time
 import sys
 import signal
 
 
-SLEEP_DELAY = 0.5
+SLEEP_DELAY = 1
 
 BRIGHTNESS = 150
 RED = [BRIGHTNESS,0,0]
@@ -74,10 +74,10 @@ numbers = [
 0,0,0,1
 ]
 
-# sense = SenseHat()
+sense = SenseHat()
 
 def signal_handler(my_signal, temp):
-   # sense.clear()
+   sense.clear()
    sys.exit(0)
 
 
@@ -96,46 +96,44 @@ def Place_Number_On_Canvas(x, y, value, colour):
 
    canvas_index = y * CANVAS_WIDTH + x
    number_index = tens * NUMBER_SIZE
-   for y in range(0, NUMBER_HEIGHT):
-     for x in range(0, NUMBER_WIDTH):
+   for line in range(0, NUMBER_HEIGHT):
+     for column in range(0, NUMBER_WIDTH):
          if numbers[number_index] == 1:
             canvas[canvas_index] = colour
          else:
             canvas[canvas_index] = BLACK
          canvas_index += 1
          number_index += 1
-     canvas_index = canvas_index + (CANVAS_WIDTH - NUMBER_WIDTH - 1)
+     canvas_index = canvas_index + (CANVAS_WIDTH - NUMBER_WIDTH)
 
    canvas_index = y * CANVAS_WIDTH + x + NUMBER_WIDTH
    number_index = ones * NUMBER_SIZE
-   for y in range(0, NUMBER_HEIGHT):
-     for x in range(0, NUMBER_WIDTH):
+   for line in range(0, NUMBER_HEIGHT):
+     for column in range(0, NUMBER_WIDTH):
          if numbers[number_index] == 1:
             canvas[canvas_index] = colour
          else:
             canvas[canvas_index] = BLACK
          canvas_index += 1
          number_index += 1
-     canvas_index = canvas_index + (CANVAS_WIDTH - NUMBER_WIDTH - 1)
+     canvas_index = canvas_index + (CANVAS_WIDTH - NUMBER_WIDTH)
 
 
 def main():
    signal.signal(signal.SIGINT, signal_handler)
-   # sense.set_rotation(180)
+   sense.set_rotation(180)
 
-   my_time = time.localtime()
-   my_minute = my_time.tm_min
-   my_hour = my_time.tm_hour
+   while True:
+      my_time = time.localtime()
+      my_minute = my_time.tm_min
+      my_hour = my_time.tm_hour
 
-   print(my_hour, ":", my_minute)
-   Place_Number_On_Canvas(0, 0, my_hour, GREEN)
-   Place_Number_On_Canvas(0, 4, my_minute, RED)
-   print(canvas)
-   # sense.clear()
-   # sense.set_pixels(canvas)
-   Clear_Canvas()
-   time.sleep(SLEEP_DELAY)
-
+      Place_Number_On_Canvas(0, 0, my_hour, GREEN)
+      Place_Number_On_Canvas(0, 4, my_minute, RED)
+      sense.clear()
+      sense.set_pixels(canvas)
+      Clear_Canvas()
+      time.sleep(SLEEP_DELAY)
 
 
 if __name__ == "__main__":
