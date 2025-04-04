@@ -1,5 +1,6 @@
 from sense_hat import SenseHat
 import math
+import random
 import time
 import sys
 import signal
@@ -7,10 +8,13 @@ import signal
 
 SLEEP_DELAY = 1
 
-BRIGHTNESS = 150
+BRIGHTNESS = 100
 RED = [BRIGHTNESS,0,0]
+PURPLE = [BRIGHTNESS,0,BRIGHTNESS]
 GREEN = [0,BRIGHTNESS,0]
 BLUE = [0,0,BRIGHTNESS]
+COLOURS = [RED, PURPLE, GREEN, BLUE]
+
 BLACK = [0,0,0]
 B = BLACK
 
@@ -122,17 +126,45 @@ def Place_Number_On_Canvas(x, y, value, colour):
 def main():
    signal.signal(signal.SIGINT, signal_handler)
    sense.set_rotation(180)
+   time_style = 24
+
+   if len(sys.argv) > 1:
+      if sys.argv[1] == "12":
+         time_style = 12
+
+   previous_minute = -1
+   previous_hour = -1
 
    while True:
       my_time = time.localtime()
       my_minute = my_time.tm_min
       my_hour = my_time.tm_hour
 
-      Place_Number_On_Canvas(0, 0, my_hour, GREEN)
-      Place_Number_On_Canvas(0, 4, my_minute, RED)
-      sense.clear()
-      sense.set_pixels(canvas)
-      Clear_Canvas()
+      if my_hour > 12 and time_style == 12:
+         my_hour -= 12
+
+      # When the minute changes, update the display
+      if my_minute != previous_minute:
+         # Change colours once pet hour
+         if my_hour != previous_hour:
+             hour_colour_index = random.randint(0, len(COLOURS) - 1 )
+             minute_colour_index = random.randint(0, len(COLOURS) - 1 )
+             while minute_colour_index == hour_colour_index:
+                minute_colour_index = random.randint(0, len(COLOURS) - 1 )
+             
+             hour_colour = COLOURS[hour_colour_index]
+             minute_colour = COLOURS[minute_colour_index]
+
+         Place_Number_On_Canvas(0, 0, my_hour, hour_colour)
+         Place_Number_On_Canvas(0, 4, my_minute, minute_colour)
+         sense.clear()
+         sense.set_pixels(canvas)
+         Clear_Canvas()
+
+         previous_minute = my_minute
+         previous_hour = my_hour
+
+      # End of while True loop, nap for a second
       time.sleep(SLEEP_DELAY)
 
 

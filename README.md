@@ -20,6 +20,14 @@ updates the time (displayed in 24 hour format) every second, showing
 hours in green and minutes in red. The Clock program runs until it
 is terminated, usually by pressing Ctrl-C.
 
+The Clock program will change the colour of the digits on the LED
+display once per hour.
+
+The Clock program accepts one parameter. By default the clock displays
+time in a 24 hour format (13:45). Passing the parameter "12" on the 
+command line will cause the clock to display time in a 12 hour format (1:45).
+
+
 
 ## Compass
 
