@@ -152,6 +152,15 @@ the LEDs if bright light is detected.
 The lightnight can also be stopped by pressing Ctrl-C which turns off the LEDs.
 
 
+
+## Pressure
+
+The Pressure program (pressure.py) detects the current air pressure
+(assuming the Sense HAT has been calibrated) and displays the 
+air pressure level on the LED screen. The pressure is displayed
+in kpa (one-tenth of a mbar).
+
+
 ## Temp
 
 The Temperature (temp.py) program checks the current room temperature around the
