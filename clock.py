@@ -148,6 +148,10 @@ def main():
          # Change colours once pet hour
          if my_hour != previous_hour:
              hour_colour_index = random.randint(0, len(COLOURS) - 1 )
+             # After the first loop through, make sure the hour colour changes.
+             if previous_hour != -1:
+                 while hour_colour == COLOURS[hour_colour_index]:
+                     hour_colour_index = random.randint(0, len(COLOURS) - 1 )
              minute_colour_index = random.randint(0, len(COLOURS) - 1 )
              while minute_colour_index == hour_colour_index:
                 minute_colour_index = random.randint(0, len(COLOURS) - 1 )
