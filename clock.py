@@ -126,6 +126,9 @@ def Place_Number_On_Canvas(x, y, value, colour):
 def main():
    signal.signal(signal.SIGINT, signal_handler)
    sense.set_rotation(180)
+   hour_colour = GREEN
+   minute_colour = RED
+   
    time_style = 24
 
    if len(sys.argv) > 1:
@@ -145,7 +148,7 @@ def main():
 
       # When the minute changes, update the display
       if my_minute != previous_minute:
-         # Change colours once pet hour
+         # Change colours once per hour
          if my_hour != previous_hour:
              hour_colour_index = random.randint(0, len(COLOURS) - 1 )
              # After the first loop through, make sure the hour colour changes.
@@ -153,7 +156,7 @@ def main():
                  while hour_colour == COLOURS[hour_colour_index]:
                      hour_colour_index = random.randint(0, len(COLOURS) - 1 )
              minute_colour_index = random.randint(0, len(COLOURS) - 1 )
-             while (minute_colour_index == hour_colour_index) and (COLOURS[minute_colour_index] == minute_colour):
+             while (minute_colour_index == hour_colour_index) or (COLOURS[minute_colour_index] == minute_colour):
                 minute_colour_index = random.randint(0, len(COLOURS) - 1 )
              
              hour_colour = COLOURS[hour_colour_index]
