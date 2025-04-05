@@ -153,7 +153,7 @@ def main():
                  while hour_colour == COLOURS[hour_colour_index]:
                      hour_colour_index = random.randint(0, len(COLOURS) - 1 )
              minute_colour_index = random.randint(0, len(COLOURS) - 1 )
-             while minute_colour_index == hour_colour_index:
+             while (minute_colour_index == hour_colour_index) and (COLOURS[minute_colour_index] == minute_colour):
                 minute_colour_index = random.randint(0, len(COLOURS) - 1 )
              
              hour_colour = COLOURS[hour_colour_index]
