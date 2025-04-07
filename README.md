@@ -190,3 +190,12 @@ Note: ny of the above games or scripts with long delays can be
 exited by pressing Ctrl-C on the console. This will cause the
 games/demos to clean up the LED display and exit.
 
+
+
+## Christmas Tree
+
+The Christmas Tree program (tree.py) displays a small evergreen tree on the Sense HAT's
+LED display. Randomly coloured lights appear on the tree and slowly grow brighter and
+dimmer, changing colours each bright/dim cycle. The lights continue to change colours
+and brightness until Ctrl-C is pressed.
+
