@@ -25,7 +25,7 @@ T = BROWN
 RGB = 3
 CHANGE_COLOUR = 5
 
-TIME_DELAY = 0.2
+TIME_DELAY = 0.1
 
 tree = [
 B, B, B, B, Y, B, B, B,
