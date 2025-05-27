@@ -140,6 +140,23 @@ will display how many rounds the player completed on the LED screen.
 
 
 
+## Nibbles
+
+The Nibbles (nibbles.py) program is a small scale recreation of the classic
+"Snake" game or QBASIC's "Nibbles". The player uses the Sense HAT's joystick
+to direct a yellow snake around the screen. The snake starts small (just two
+pixels). Each time the snake runs into a piece of food (represented by a green
+pixel) the snake grows.
+
+The object of the game is to grow the snake as large as possible by eating food
+while not running into the sides of the screen. The snake also cannot run into
+(or eat) itself or it will die and the game will be over.
+
+The joystick turns the snake. Pressing "down" on the joystick pauses
+(and unpauses) the game.
+
+
+
 ## Nightlight
 
 The Nightlight (nightlight.py) program detects when there is little to no light

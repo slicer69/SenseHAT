@@ -18,6 +18,8 @@ COLOURS = (RED, YELLOW, GREEN, BLUE, PURPLE)
 BLACK = (0, 0, 0)
 B = BLACK
 SNAKE_COLOUR = YELLOW
+FOOD_COLOUR = GREEN
+
 
 BOARD_WIDTH = 8
 BOARD_HEIGHT = 8
@@ -67,22 +69,66 @@ def Place_Snake_On_Board(my_board, snake, max_snake):
        snake_index += 1
 
 
+# Find an empty spot where we can put food on the board
+# Try at random the first time, then move along the board
+# until we find a free spot.
+def Place_Food(the_board):
+   spot = random.randint(0, BOARD_SIZE - 1)
+   # First attempt to find a random spot
+   if the_board[spot] == B:
+      the_board[spot] = FOOD_COLOUR
+   # Random spot was taken, move along the board looking for a new spot
+   else:
+      spot += 1
+      done = False
+      while not done:
+         # Avoid going off the board
+         if spot >= BOARD_SIZE - 1:
+            done = True
+         else:
+            # Found a goo spot, claim it
+            if the_board[spot] == B:
+               the_board[spot] = FOOD_COLOUR
+               done = True
+            # This spot is full too, keep looking
+            else:
+               spot += 1
+   
+   # Found a good spot, translate the coordinates
+   if spot < BOARD_SIZE - 1:
+       food_x = spot % BOARD_WIDTH
+       food_y = math.trunc(spot / BOARD_WIDTH)
+   # Did not find a good spot, return error so we can try again later.
+   else:
+       food_x = -1
+       food_y = -1
+   return (food_x, food_y)
+ 
+
 # Detect if we ran into ourselves or the side of the wall.
 # Returns True if we ran unto a wall or ourselves.
 # Returns False if we did not run into anything.
 def Detect_Collision(the_board, x, y):
     # Check if we are off the board first
-    if x < 0 or x >= BOARD_WIDTH:
+    if x < 0 or x > BOARD_WIDTH:
        return True
-    if y < 0 or y >= BOARD_HEIGHT:
+    if y < 0 or y > BOARD_HEIGHT:
        return True
 
     # See if we ran into our own colour/tail
     offset = math.trunc( (y * BOARD_WIDTH) + x )
     if the_board[offset] == SNAKE_COLOUR:
         return True
-
     return False
+
+
+
+# Check to see if we wre running into food
+def Detect_Food(the_board, x, y):
+   offset = math.trunc( (y * BOARD_WIDTH) + x )
+   if the_board[offset] == FOOD_COLOUR:
+      return True
+   return False
 
 
 # Get an action from the joystick. Waits for the joystick to
@@ -135,6 +181,8 @@ def Get_Player_Move(old_direction):
 
 def main():
    snake_position = []
+   food_position = (-1, -1)
+
    finished = False
    my_board = [ B, B, B, B, B, B, B, B,
                 B, B, B, B, B, B, B, B,
@@ -168,6 +216,10 @@ def main():
       # add snake to board
       Place_Snake_On_Board(my_board, snake_position, max_snake_length)
 
+      # Place food on board if required
+      if food_position[0] < 0:
+         food_position = Place_Food(my_board)
+
       # display board
       Draw_Board(my_board)
 
@@ -194,6 +246,12 @@ def main():
       if collision:
           finished = True
           sense.clear(RED)
+
+      # Detect if we ran into food
+      collision = Detect_Food(my_board, x, y)
+      if collision:
+          max_snake_length += 1
+          food_position = (-1, -1)
 
       # wait
       time.sleep(REFRESH_DELAY)
