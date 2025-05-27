@@ -103,7 +103,7 @@ def Joystick_Action():
 
 
 # Check for input from joystick.
-# Perform validation to make sure the plyer
+# Perform validation to make sure the player
 # is not trying to reverse course (180 degrees).
 # Return the new direction.
 def Get_Player_Move(old_direction):
@@ -113,18 +113,18 @@ def Get_Player_Move(old_direction):
     direction = Joystick_Action()
     # remember, direction of stick is inverse
     if direction == "up" and old_direction != DIR_UP:
-        new_direction = DIR_DOWN
-    elif direction == "down" and old_direction != DIR_DOWN:
         new_direction = DIR_UP
+    elif direction == "down" and old_direction != DIR_DOWN:
+        new_direction = DIR_DOWN
     elif direction == "left" and old_direction != DIR_LEFT:
-        new_direction = DIR_RIGHT
-    elif direction == "right" and old_direction != DIR_RIGHT:
         new_direction = DIR_LEFT
+    elif direction == "right" and old_direction != DIR_RIGHT:
+        new_direction = DIR_RIGHT
     elif direction == "middle":
         # Pause. Loop until middle button is pressed again.
         pause = True
         while pause:
-           direction = Joystck_Action()
+           direction = Joystick_Action()
            if direction == "middle":
               pause = False
            else:
