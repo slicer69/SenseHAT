@@ -36,6 +36,22 @@ The Compass (compass.py) program reads the current direction of the Sense HAT
 of the Pi is then printed to the LED lights.
 
 
+## Dice
+
+The Dice program (dice.py) generates a random dice roll. By default the value
+is in the range of 1-6 (for a six-sided die). However, the program can accept
+one optional parameter, a number in the range of 3 to 20. This allows the
+program to roll a random number for different types of dice.
+
+The result is displayed both on the console and by a number of randomly
+coloured dots which appear on the SenseHAT. The dots remain on the SenseHAT
+under the user presses the Enter key. The display is then cleared.
+
+The dots on the SenseHAT screen will be arranged roughly in a circular
+pattern around the centre, attempting to evenly space the dots.
+
+
+
 ## Eggtimer
 
 The Eggtimer (eggtimer.py) program accepts a single parameter, a time in
