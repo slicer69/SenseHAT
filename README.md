@@ -3,6 +3,15 @@
 This repository hosts a series of simple Python scripts which can be
 used to interact with the Sense HAT for a Raspberry Pi computer.
 
+
+## Ball
+
+The Ball program (ball.py) causes a single pixel to bounce around the LED
+screen of the Sense HAT. The ball changes vector and colour every time it hits
+the edge of the screen. This program takes no arguments and continues to run
+until the user presses Ctrl-C.
+
+
 ## Clear
 
 The Clear program (clear.py) causes the LED lights on the Sense HAT to
