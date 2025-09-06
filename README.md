@@ -1,5 +1,7 @@
 # SenseHAT
 
+## This repository has been migrated to CodeBerg: https://codeberg.org/thejessesmith/SenseHAT
+
 This repository hosts a series of simple Python scripts which can be
 used to interact with the Sense HAT for a Raspberry Pi computer.
 
